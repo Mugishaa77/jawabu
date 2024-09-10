@@ -155,6 +155,14 @@ nav ul li a:hover {
   background-color: #e8e8e8;
 }
 
+.services a {
+  color: var(--orange);
+  font-size: 19px;
+}
+
+.services a:hover {
+  color: var(--grey);
+}
 /* Bookings */
 .booking {
   padding: 1rem;
@@ -166,3 +174,4 @@ nav ul li a:hover {
   padding: 0;
   margin: 0;
 }
+
