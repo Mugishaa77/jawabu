@@ -70,7 +70,7 @@ function BookingCalendar() {
         <div>
            <div className="lists">
            <div className="list-of-services">
-               <h3>Select Service Below</h3>
+               <h3>To Hire Our Services:</h3>
                 <ul className="book-a-service">
                     {services.map(service => (
                         <li 
@@ -85,16 +85,25 @@ function BookingCalendar() {
                     ))}
                 </ul>
             </div>
-            <div classname="list-of-events">
+            <div className="list-of-events">
                 <h3>For Event Planning:</h3>
                 <li 
-                    className={selectedService === 'Event Planning' ? 'selected' : ''}
-                    onClick={() => {
-                        setSelectedService('Event Planning');
-                        setEventType(''); // Reset event type when selecting event planning
-                    }}>
-                    <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
-                </li>
+    className={selectedService === 'Event Planning' ? 'selected' : ''}
+    onClick={() => {
+        if (selectedService === 'Event Planning') {
+            // Deselect the item if it's already selected
+            setSelectedService('');
+            setEventType(''); // Reset event type if deselecting
+        } else {
+            // Select the item
+            setSelectedService('Event Planning');
+            setEventType(''); // Reset event type when selecting event planning
+        }
+    }}
+>
+    <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
+</li>
+
                 {selectedService === 'Event Planning' && (
                     <div>
                         <h4>Select Event Type:</h4>
@@ -112,33 +121,44 @@ function BookingCalendar() {
                     </div>
                 )}
             </div>
+           
            </div>
-            <div className="calendar">
+
+           <div className="bottom-part">
+           <div className="calendar">
                 <h3>Select Date:</h3>
-                <Calendar onChange={handleDateChange} value={date} />
+               <div className="calendar-container">
+               <Calendar onChange={handleDateChange} value={date} />
+               </div>
+                <p>Date Selected: {date.toDateString()}</p>
             </div>
-            {isAvailable ? (
+
+            <div className="confirmation">
+            <div>
+                                <h3>Confirmation</h3>
+
+                                <h4>Event Details</h4>
+                                <p>Service:<span> {selectedService}</span></p>
+                                {selectedService === 'Event Planning' && <p>Event Type:<span> {eventType}</span></p>}
+                                <p>Date:<span> {date.toDateString()}</span></p>
+                            </div>
+                            {isAvailable ? (
                 <div >
-                    <h3>Selected Date: {date.toDateString()}</h3>
+                   <h4>Your Details</h4>
                     {showBookingForm && (
                         <form onSubmit={handleBookingSubmit}>
-                            <div>
+                    <div className="bo">
                                 <label>Name:</label>
                                 <input type="text" required className="form-control"/>
-                            </div>
-                            <div>
+                                </div>
+
+                                <div  className="bo">   
                                 <label>Email:</label>
-                                <input type="email" required classname="form-control" />
-                            </div>
-                            <div>
-                                <h4>Summary:</h4>
-                                <p>Service: {selectedService}</p>
-                                {selectedService === 'Event Planning' && <p>Event Type: {eventType}</p>}
-                                <p>Date: {date.toDateString()}</p>
-                            </div>
-                            <div>
-                                <button type="submit">Book Now</button>
-                            </div>
+                                <input type="email" className="form-control" required  />
+                                </div>  
+                           
+                           
+                           
                         </form>
                     )}
                 </div>
@@ -146,6 +166,15 @@ function BookingCalendar() {
                 <h3>The selected date is not available for booking.</h3>
             )}
 
+            </div>
+           </div>
+
+
+         
+         
+<div>
+                                <button type="submit">Book Now</button>
+                            </div>
              {/* Toast Container */}
              <ToastContainer />
         </div>

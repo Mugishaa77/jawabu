@@ -50,7 +50,7 @@ nav ul li a:hover {
 
 /* Homepage */
  .home {
-  background-color: #FCFCFA;
+  background-color: #ffffdf;
  width: 100%;
 }  
 
@@ -77,7 +77,7 @@ nav ul li a:hover {
 }
 
 .slide img {
-  background-color: #FCFCFA;
+ 
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -172,35 +172,183 @@ nav ul li a:hover {
   color: var(--grey);
   font-size: 22px;
   padding: 0;
-  margin: 0;
+  margin: 1rem;
+  text-align: center;
 }
 
 .lists {
   width: 100%;
   display: flex;
-  align-content: space-around;
+  justify-content: space-between; /* Distribute the services and event sections evenly */
+  gap: 20px; /* Add some space between the service and event lists */
+  list-style-type: none;
+  border-bottom: 1px solid var(--orange);
 }
 
-.book-a-service{
+.list-of-services, .list-of-events {
+  flex: 1; /* Make both sections take equal space */
+}
+
+
+
+
+.list-of-services,
+.list-of-events {
+  background-color:#FCFCFA;;
+  padding: 1rem;
+  border-right: 1px solid var(--orange);
+  padding-top: 0;
+}
+
+.list-of-events {
+  border: none;
+}
+
+.list-of-services h3,
+.list-of-events h3 {
+  margin: 1rem;
+  text-align: center;
+  text-decoration: underline;
+ color: var(--grey)
+}
+
+.book-a-service,
+.event-types-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
   list-style-type: none;
   
 }
 
-.book-a-service li {
+.book-a-service li,
+.list-of-events li {
   padding: 1rem;
   color: var(--orange);
 border: 1px solid var(--orange);
 margin: 2px;
 font-family: var(--poppins);
 border-radius: 5px;
+transition: background-color 0.3s, border-color 0.3s;
 }
 
-.book-a-service li span {
+.book-a-service li.selected,
+.list-of-events li.selected {
+  background-color: #e0f7fa; /* Light blue background for selected item */
+  border-color: #00796b; /* Darker border color for selected item */
+}
+
+.lists h4 {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  color: var(--grey);
+  text-decoration: underline;
+}
+
+.list-of-events {
+  text-align: center;
+  margin-top: 0;
+  
+}
+
+.book-a-service li span,
+.list-of-events li span {
   margin-left: 2px;
   color: var(--grey)
 }
 
-.book-a-service li:hover {
+.book-a-service li:hover,
+.list-of-events li:hover {
   transform: translateY(-5px);
   background-color: #e8e8e8;
+}
+
+.event-types-list {
+  border: 1px solid var(--orange);
+  padding: 1rem;
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+}
+
+.event-types-list li {
+  border: 1px solid var(--grey);
+  color: var(--orange)
+}
+
+.bottom-part {
+  display: flex;
+}
+
+.calendar {
+  flex: 1;
+  padding: 1rem;
+  border-left: 1px solid var(--orange);
+  text-align: center;
+}
+
+.calendar h3 {
+  color: var(--grey);  
+}
+
+.calendar-container {
+  display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+
+.calendar p {
+  font-family: var(--poppins);
+  font-size: 16px;
+  color: var(--orange);
+}
+
+.bottom-part{
+  display: flex;
+  flex-direction: row;
+  background-color: #FCFCFA;
+}
+
+.confirmation {
+  flex: 1;
+  border-left: 1px solid var(--orange);
+  border-right: 1px solid var(--orange);
+  background-color: #FCFCFA;
+  padding: 1rem;
+}
+
+.confirmation h3 {
+  color: var(--grey);
+}
+
+.confirmation h4 {
+  padding-bottom: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.confirmation p {
+  text-align: left;
+  color: var(--grey);
+  font-family: var(--poppins);
+  padding: 0;
+  font-size: 17px;
+ line-height: 1rem;
+}
+
+.confirmation p span {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.confirmation form label {
+  color: var(--grey);
+  font-family: var(--poppins)
+}
+
+.confirmation .bo {
+  width: 100%;
+}
+
+.confirmation form input {
+padding: 1rem;
+
 }
