@@ -3,6 +3,8 @@
   --grey: #41403E;
   --navyellow: #F7F5C9;
   --poppins:  "Poppins", sans-serif;
+  --montserrat: "Montserrat", sans-serif;
+  --lora: "Lora", serif;
 }
 
 .App {
@@ -166,6 +168,13 @@ nav ul li a:hover {
 /* Bookings */
 .booking {
   padding: 1rem;
+  background-color: #FCFCFA;
+}
+
+.booking-page {
+  border: 1px solid var(--orange);
+  border-radius: 5px;;
+  background-color: white;
 }
 
 .booking p {
@@ -174,6 +183,7 @@ nav ul li a:hover {
   padding: 0;
   margin: 1rem;
   text-align: center;
+  
 }
 
 .lists {
@@ -183,6 +193,8 @@ nav ul li a:hover {
   gap: 20px; /* Add some space between the service and event lists */
   list-style-type: none;
   border-bottom: 1px solid var(--orange);
+ background-color: #FCFCFA;
+ background-color: white;
 }
 
 .list-of-services, .list-of-events {
@@ -194,9 +206,9 @@ nav ul li a:hover {
 
 .list-of-services,
 .list-of-events {
-  background-color:#FCFCFA;;
-  padding: 1rem;
   border-right: 1px solid var(--orange);
+  padding: 1rem;
+  
   padding-top: 0;
 }
 
@@ -208,8 +220,8 @@ nav ul li a:hover {
 .list-of-events h3 {
   margin: 1rem;
   text-align: center;
-  text-decoration: underline;
- color: var(--grey)
+ color: var(--grey);
+ font-family: var(--lora);
 }
 
 .book-a-service,
@@ -260,7 +272,7 @@ transition: background-color 0.3s, border-color 0.3s;
 .book-a-service li:hover,
 .list-of-events li:hover {
   transform: translateY(-5px);
-  background-color: #e8e8e8;
+  background-color: #FEFFF1;
 }
 
 .event-types-list {
@@ -275,6 +287,11 @@ transition: background-color 0.3s, border-color 0.3s;
   color: var(--orange)
 }
 
+.event-types-list li:hover {
+  border: 1px solid var(--orange);
+
+}
+
 .bottom-part {
   display: flex;
 }
@@ -282,7 +299,6 @@ transition: background-color 0.3s, border-color 0.3s;
 .calendar {
   flex: 1;
   padding: 1rem;
-  border-left: 1px solid var(--orange);
   text-align: center;
 }
 
@@ -311,9 +327,11 @@ transition: background-color 0.3s, border-color 0.3s;
 .confirmation {
   flex: 1;
   border-left: 1px solid var(--orange);
-  border-right: 1px solid var(--orange);
   background-color: #FCFCFA;
-  padding: 1rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  
+ 
 }
 
 .confirmation h3 {
@@ -332,6 +350,24 @@ transition: background-color 0.3s, border-color 0.3s;
   padding: 0;
   font-size: 17px;
  line-height: 1rem;
+ 
+}
+
+p.sorry {
+  text-align: center;
+  padding: 1rem;
+}
+
+.sorry em {
+  font-size: 15px;
+  color: var(--orange);
+  font-family: var(--lora);
+  text-decoration: underline;
+  padding: 5px;
+}
+
+.sorry em:hover {
+  color: var(--grey)
 }
 
 .confirmation p span {
@@ -344,11 +380,31 @@ transition: background-color 0.3s, border-color 0.3s;
   font-family: var(--poppins)
 }
 
-.confirmation .bo {
-  width: 100%;
+.confirmation .details {
+  display: flex;
+  flex-direction: column;
 }
 
 .confirmation form input {
-padding: 1rem;
+padding: 0.7rem;
+border: 1px solid var(--orange);
+border-radius: 2px;
 
+}
+
+button.book {
+  float: right; /* This will float the button to the right within its container */
+  margin: 1rem;
+  color: var(--navyellow);
+  background-color: var(--orange);
+  padding: 0.5rem;
+  border: 1px solid var(--orange);
+  border-radius: 3px;
+  margin-top: 2rem;
+}
+
+button.book:hover {
+  color: var(--orange);
+  background-color: var(--navyellow);
+  border: 1px solid var(--navyellow);
 }

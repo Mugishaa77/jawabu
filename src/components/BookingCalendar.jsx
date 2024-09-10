@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import { Calendar } from 'react-calendar';
+import { toast, ToastContainer } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMicrophone, faUserTie, faHeadphones, faLightbulb, faVideo, faCalendarAlt, faBolt } from '@fortawesome/free-solid-svg-icons';
-import { ToastContainer, toast } from 'react-toastify';
+import { faMicrophone, faUserTie, faHeadphones, faLightbulb, faVideo, faBolt, faCalendarAlt, faFaceFrown, faPaperPlane, faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-calendar/dist/Calendar.css';
 
 function BookingCalendar() {
     const [date, setDate] = useState(new Date());
@@ -36,19 +36,27 @@ function BookingCalendar() {
     ];
 
     const handleDateChange = (newDate) => {
-        setDate(newDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Ensure today's date has no time component
+
+        // Check if the selected date is in the past
+        if (newDate < today) {
+            setIsAvailable(false);
+            setShowBookingForm(false);
+            return;
+        }
+
         const availability = !bookedDates.some(
             (bookedDate) => bookedDate.toDateString() === newDate.toDateString()
         );
+        setDate(newDate);
         setIsAvailable(availability);
         setShowBookingForm(availability);
     };
 
-
     const handleBookingSubmit = (event) => {
         event.preventDefault();
         if (selectedService && (selectedService !== 'Event Planning' || eventType)) {
-            // Trigger the success toast notification
             toast.success('Booking confirmed!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -58,16 +66,15 @@ function BookingCalendar() {
                 draggable: true,
                 progress: undefined,
             });
-            
             // Handle booking submission (e.g., send data to server)
         } else {
             toast.error('Please complete the form by selecting a service and event type if required.');
         }
     };
-    
 
     return (
-        <div>
+        <div className="booking-page">
+             
            <div className="lists">
            <div className="list-of-services">
                <h3>To Hire Our Services:</h3>
@@ -88,22 +95,19 @@ function BookingCalendar() {
             <div className="list-of-events">
                 <h3>For Event Planning:</h3>
                 <li 
-    className={selectedService === 'Event Planning' ? 'selected' : ''}
-    onClick={() => {
-        if (selectedService === 'Event Planning') {
-            // Deselect the item if it's already selected
-            setSelectedService('');
-            setEventType(''); // Reset event type if deselecting
-        } else {
-            // Select the item
-            setSelectedService('Event Planning');
-            setEventType(''); // Reset event type when selecting event planning
-        }
-    }}
->
-    <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
-</li>
-
+                    className={selectedService === 'Event Planning' ? 'selected' : ''}
+                    onClick={() => {
+                        if (selectedService === 'Event Planning') {
+                            setSelectedService('');
+                            setEventType(''); // Reset event type if deselecting
+                        } else {
+                            setSelectedService('Event Planning');
+                            setEventType(''); // Reset event type when selecting event planning
+                        }
+                    }}
+                >
+                    <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
+                </li>
                 {selectedService === 'Event Planning' && (
                     <div>
                         <h4>Select Event Type:</h4>
@@ -114,14 +118,13 @@ function BookingCalendar() {
                                     className={eventType === type ? 'selected' : ''}
                                     onClick={() => setEventType(type)}
                                 >
-                                    {type}
+                                   <FontAwesomeIcon icon={faPaperPlane} /> {type}
                                 </li>
                             ))}
                         </ul>
                     </div>
                 )}
             </div>
-           
            </div>
 
            <div className="bottom-part">
@@ -135,48 +138,36 @@ function BookingCalendar() {
 
             <div className="confirmation">
             <div>
-                                <h3>Confirmation</h3>
+                <h3>Confirmation:</h3>
 
-                                <h4>Event Details</h4>
-                                <p>Service:<span> {selectedService}</span></p>
-                                {selectedService === 'Event Planning' && <p>Event Type:<span> {eventType}</span></p>}
-                                <p>Date:<span> {date.toDateString()}</span></p>
-                            </div>
-                            {isAvailable ? (
-                <div >
-                   <h4>Your Details</h4>
+                <h4>Event Details</h4>
+                <p>Service:<span> {selectedService}</span></p>
+                {selectedService === 'Event Planning' && <p>Event Type:<span> {eventType}</span></p>}
+                <p><FontAwesomeIcon icon={faCalendarDay} /> Date:<span> {date.toDateString()}</span></p>
+            </div>
+            {isAvailable ? (
+                <div>
+                    <h4>Your Details</h4>
                     {showBookingForm && (
-                        <form onSubmit={handleBookingSubmit}>
-                    <div className="bo">
-                                <label>Name:</label>
-                                <input type="text" required className="form-control"/>
-                                </div>
-
-                                <div  className="bo">   
-                                <label>Email:</label>
-                                <input type="email" className="form-control" required  />
-                                </div>  
-                           
-                           
-                           
+                        <form onSubmit={handleBookingSubmit} className="details">
+                            <label>Name:</label>
+                            <input type="text" required />
+                            <label>Email:</label>
+                            <input type="email" required />
                         </form>
                     )}
+                     <button type="submit" className="book">Book Now</button>
                 </div>
             ) : (
-                <h3>The selected date is not available for booking.</h3>
+                <p className="sorry">
+                    The selected date is not available for booking <FontAwesomeIcon icon={faFaceFrown} />.<br/>
+<em>Choose later date instead?</em>
+                </p>
             )}
-
+           
             </div>
            </div>
-
-
-         
-         
-<div>
-                                <button type="submit">Book Now</button>
-                            </div>
-             {/* Toast Container */}
-             <ToastContainer />
+           <ToastContainer />
         </div>
     );
 }
