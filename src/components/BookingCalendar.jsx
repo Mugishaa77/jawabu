@@ -118,7 +118,7 @@ function BookingCalendar() {
                                     className={eventType === type ? 'selected' : ''}
                                     onClick={() => setEventType(type)}
                                 >
-                                   <FontAwesomeIcon icon={faPaperPlane} /> {type}
+                                  <FontAwesomeIcon icon={faPaperPlane} /> {type}
                                 </li>
                             ))}
                         </ul>

@@ -1,34 +1,66 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMicrophone, faUserTie, faHeadphones, faLightbulb, faVideo, faCalendarAlt, faBolt,faCameraRetro } from '@fortawesome/free-solid-svg-icons';
+import System from '../pictures/system.jpg';
+import Mcee from '../pictures/mcee.jpg';
+import Birthday from '../pictures/birthday.jpg';
+import PA from '../pictures/pa.jpg';
+import Lighting from '../pictures/lighting.jpg';
+import Photography from '../pictures/photography.jpg';
+import Stream from '../pictures/stream.jpg'
+import Generator from '../pictures/generator.jpg';
 
 const Services = () => (
     <div className="services">
         <h3>Our Services</h3>
         <ul className="services-list">
     <li>
-        <FontAwesomeIcon icon={faMicrophone} /> <span>PA</span>
+        <img src={PA} />
+       <figcaption>
+       <FontAwesomeIcon icon={faMicrophone} /> <span>PA</span>
+       </figcaption>
     </li>
     <li>
+        <img src={Mcee}/>
+        <figcaption>
         <FontAwesomeIcon icon={faUserTie} /><span> MC</span>
+        </figcaption>
     </li>
     <li>
-        <FontAwesomeIcon icon={faHeadphones} /> <span>DJ</span>
+        <img src={System} />
+       <figcaption>
+       <FontAwesomeIcon icon={faHeadphones} /> <span>DJ</span>
+       </figcaption>
     </li>
     <li>
-        <FontAwesomeIcon icon={faLightbulb} /> <span>Stage Lighting</span>
+       <img src={Lighting}/>
+       <figcaption>
+       <FontAwesomeIcon icon={faLightbulb} /> <span>Stage Lighting</span>
+       </figcaption>
     </li>
     <li>
-        <FontAwesomeIcon icon={faCameraRetro} /><span>Photography</span>
+        <img src={Photography}/>
+       <figcaption>
+       <FontAwesomeIcon icon={faCameraRetro} /><span>Photography</span>
+       </figcaption>
     </li>
     <li>
+        <img src={Stream} />
+        <figcaption>
         <FontAwesomeIcon icon={faVideo} /> <span>Live Streaming</span>
+        </figcaption>
     </li>
     <li>
-        <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
+       <img src={Birthday} />
+       <figcaption>
+       <FontAwesomeIcon icon={faCalendarAlt} /> <span>Event Planning</span>
+       </figcaption>
     </li>
     <li>
-        <FontAwesomeIcon icon={faBolt} /> <span>Backup Generator</span>
+        <img src={Generator}/>
+       <figcaption>
+       <FontAwesomeIcon icon={faBolt} /> <span>Backup Generator</span>
+       </figcaption>
     </li>
    
 </ul>
