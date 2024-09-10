@@ -5,8 +5,7 @@ export default function Booking () {
     return (
         <div className="booking">
             <p>
-            At Jawabu, we are commited to ensuring you get the best experience possible.
-            To make a booking, follow the steps below:
+            Thankyou for considering Jawabu to make your day a success. To book a service, please follow the steps below:
             </p>
            
             <Packages />

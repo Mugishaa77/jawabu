@@ -68,10 +68,10 @@ function BookingCalendar() {
 
     return (
         <div>
-            <h2>Booking Calendar</h2>
-            <div>
-                <h3>Select Service:</h3>
-                <ul className="services-list">
+           <div className="lists">
+           <div className="list-of-services">
+               <h3>Select Service Below</h3>
+                <ul className="book-a-service">
                     {services.map(service => (
                         <li 
                             key={service.name} 
@@ -85,8 +85,8 @@ function BookingCalendar() {
                     ))}
                 </ul>
             </div>
-            <div>
-                <h3>Event Planning:</h3>
+            <div classname="list-of-events">
+                <h3>For Event Planning:</h3>
                 <li 
                     className={selectedService === 'Event Planning' ? 'selected' : ''}
                     onClick={() => {
@@ -112,22 +112,23 @@ function BookingCalendar() {
                     </div>
                 )}
             </div>
-            <div>
+           </div>
+            <div className="calendar">
                 <h3>Select Date:</h3>
                 <Calendar onChange={handleDateChange} value={date} />
             </div>
             {isAvailable ? (
-                <div>
+                <div >
                     <h3>Selected Date: {date.toDateString()}</h3>
                     {showBookingForm && (
                         <form onSubmit={handleBookingSubmit}>
                             <div>
                                 <label>Name:</label>
-                                <input type="text" required />
+                                <input type="text" required className="form-control"/>
                             </div>
                             <div>
                                 <label>Email:</label>
-                                <input type="email" required />
+                                <input type="email" required classname="form-control" />
                             </div>
                             <div>
                                 <h4>Summary:</h4>

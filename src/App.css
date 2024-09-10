@@ -175,3 +175,32 @@ nav ul li a:hover {
   margin: 0;
 }
 
+.lists {
+  width: 100%;
+  display: flex;
+  align-content: space-around;
+}
+
+.book-a-service{
+  list-style-type: none;
+  
+}
+
+.book-a-service li {
+  padding: 1rem;
+  color: var(--orange);
+border: 1px solid var(--orange);
+margin: 2px;
+font-family: var(--poppins);
+border-radius: 5px;
+}
+
+.book-a-service li span {
+  margin-left: 2px;
+  color: var(--grey)
+}
+
+.book-a-service li:hover {
+  transform: translateY(-5px);
+  background-color: #e8e8e8;
+}
