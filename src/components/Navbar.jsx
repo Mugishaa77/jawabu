@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import Jawabu from '../logo/jawabu.png';
 
 export default function Navbar () {
@@ -7,7 +8,8 @@ export default function Navbar () {
                 <img src={Jawabu} />
                 <ul>
                     <li>
-                        Home
+                        <NavLink to="/">
+                        Home</NavLink>
                     </li>
                     <li>
                         About
@@ -16,7 +18,8 @@ export default function Navbar () {
                         Services
                     </li>
                     <li>
-                        Booking
+                        <NavLink to="/booking">
+                        Booking</NavLink>
                     </li>
                     <li>
                         Contact 

@@ -6,7 +6,10 @@ import './App.css';
 
 // components
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+
+// pages
+import Home from './pages/Home';
+import Booking from './pages/Booking';
 
 
 function App() {
@@ -17,6 +20,7 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Home/>} />
+      <Route path="/booking" element={<Booking/>} />
 
     </Routes>
     </BrowserRouter>
