@@ -10,7 +10,9 @@ import Navbar from './components/Navbar';
 // pages
 import Home from './pages/Home';
 import Booking from './pages/Booking';
-
+import About from './pages/About';
+import ServicesComponent from './pages/ServicesComponent';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/booking" element={<Booking/>} />
+      <Route path="/about" element={<About/>} />
+      <Route path="/services" element={<ServicesComponent />} />
+      <Route path="/contact" element={<Contact/>}/>
 
     </Routes>
     </BrowserRouter>

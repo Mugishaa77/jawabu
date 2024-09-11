@@ -11,7 +11,7 @@ import Stream from '../pictures/stream.jpg'
 import Generator from '../pictures/generator.jpg';
 
 const Services = () => (
-    <div className="services">
+    <div id="services" className="services">
         <h3>Our Services</h3>
         <ul className="services-list">
     <li>
