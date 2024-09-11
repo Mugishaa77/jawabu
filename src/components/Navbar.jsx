@@ -18,6 +18,7 @@ export default function Navbar() {
     <div className="navbar">
       <nav>
         <img src={Jawabu} alt="Jawabu Events Logo" className="logo" />
+        <div className="hamburger">
         <button
           className="hamburger-menu"
           onClick={handleMenuToggle}
@@ -27,6 +28,7 @@ export default function Navbar() {
             <path fillRule="evenodd" d="M2 12.5a.5.5 0 0 1 0-1h12a.5.5 0 0 1 0 1H2zm0-4a.5.5 0 0 1 0-1h12a.5.5 0 0 1 0 1H2zm0-4a.5.5 0 0 1 0-1h12a.5.5 0 0 1 0 1H2z"/>
           </svg>
         </button>
+        </div>
         <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <li>
             <NavLink to="/" onClick={handleNavLinkClick}>Home</NavLink>
